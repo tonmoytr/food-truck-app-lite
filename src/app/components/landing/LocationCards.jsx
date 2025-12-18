@@ -32,7 +32,7 @@ export default async function LocationCards() {
               className="group block w-full"
             >
               {/* FIX: Use brackets for custom height [450px] */}
-              <div className="relative h-[450px] w-full rounded-3xl overflow-hidden shadow-md group-hover:shadow-2xl transition-all duration-500 ease-out">
+              <div className="relative h-112.5 w-full rounded-3xl overflow-hidden shadow-md group-hover:shadow-2xl transition-all duration-500 ease-out">
                 {/* Background Image */}
                 <div className="absolute inset-0 w-full h-full">
                   <Image
@@ -45,7 +45,7 @@ export default async function LocationCards() {
                 </div>
 
                 {/* FIX: Use bg-gradient-to-t (not bg-linear-to-t) */}
-                <div className="absolute inset-0 bg-gradient-to-t from-nature-500/90 via-nature-500/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-t from-nature-500/90 via-nature-500/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
 
                 {/* Content Container */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">

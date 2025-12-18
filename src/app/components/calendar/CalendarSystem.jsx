@@ -26,7 +26,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
-// Import our new Modals
 import MenuModal from "./MenuModal";
 import TruckModal from "./TruckModal";
 
@@ -39,8 +38,11 @@ export default function CalendarSystem({
   const [currentDate, setCurrentDate] = useState(new Date());
 
   // --- Modal State ---
-  const [selectedEvent, setSelectedEvent] = useState(null); // Stores the truck & date
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Toggles Menu Modal
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // FIX: New state to track if we opened menu directly from the calendar icon
+  const [isDirectMenuAccess, setIsDirectMenuAccess] = useState(false);
 
   // --- Helpers ---
   const truckMap = trucks.reduce((acc, truck) => {
@@ -78,20 +80,33 @@ export default function CalendarSystem({
 
   // --- Interaction Handlers ---
 
-  // 1. Open Truck Details
+  // 1. Open Truck Details (Standard Flow)
   const handleTruckClick = (truck, dateFormatted) => {
     setSelectedEvent({ truck, date: dateFormatted });
-    setIsMenuOpen(false); // Ensure menu is closed initially
+    setIsMenuOpen(false);
+    setIsDirectMenuAccess(false); // We are NOT direct, we want the "Back" behavior
   };
 
-  // 2. Open Menu Directly
+  // 2. Open Menu Directly (Direct Flow)
   const handleMenuClick = (e, truck, dateFormatted) => {
     e.stopPropagation();
     setSelectedEvent({ truck, date: dateFormatted });
     setIsMenuOpen(true);
+    setIsDirectMenuAccess(true); // We ARE direct, we want "Close All" behavior
   };
 
-  // 3. Helper to find menu for selected truck
+  // 3. Smart Close Handler
+  const handleCloseMenu = () => {
+    if (isDirectMenuAccess) {
+      // If opened via icon, close EVERYTHING
+      setSelectedEvent(null);
+      setIsMenuOpen(false);
+    } else {
+      // If opened via Truck Modal, just go BACK to Truck Modal
+      setIsMenuOpen(false);
+    }
+  };
+
   const getSelectedMenu = () => {
     if (!selectedEvent) return null;
     return menus.find((m) => m.truckId === selectedEvent.truck.id);
@@ -99,7 +114,7 @@ export default function CalendarSystem({
 
   return (
     <div className="w-full max-w-7xl mx-auto px-2 sm:px-6 mb-20" {...handlers}>
-      {/* --- Header (Same as before) --- */}
+      {/* Header & Filters */}
       <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-8 gap-4 bg-white p-6 rounded-2xl shadow-sm border border-nature-100">
         <div>
           <h2 className="text-3xl font-serif font-bold text-nature-500">
@@ -146,7 +161,7 @@ export default function CalendarSystem({
         </div>
       </div>
 
-      {/* --- Calendar Grid (Same as before) --- */}
+      {/* Calendar Grid */}
       <div className="bg-white rounded-3xl shadow-xl border border-nature-100 overflow-hidden">
         <div className="grid grid-cols-7 border-b border-nature-100 bg-nature-50/50">
           {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
@@ -178,7 +193,7 @@ export default function CalendarSystem({
                   }
                 `}
               >
-                {/* Holiday Logic (Same as before) */}
+                {/* Holiday Background */}
                 {holiday && isSelectedMonth && (
                   <div className="hidden md:block absolute inset-0 pointer-events-none z-0">
                     <Image
@@ -191,6 +206,8 @@ export default function CalendarSystem({
                     <div className="absolute inset-0 bg-black/20 mix-blend-overlay" />
                   </div>
                 )}
+
+                {/* Date & Mobile Holiday Text */}
                 <div className="flex justify-between items-start relative z-10">
                   <span
                     className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold ${
@@ -205,6 +222,7 @@ export default function CalendarSystem({
                     </span>
                   )}
                 </div>
+                {/* Desktop Holiday Text */}
                 {holiday && (
                   <div className="hidden md:block absolute bottom-1 right-2 text-xs font-bold text-nature-200 uppercase tracking-widest opacity-40 -rotate-12 pointer-events-none">
                     {holiday.name}
@@ -221,7 +239,6 @@ export default function CalendarSystem({
                     return (
                       <div
                         key={event.id}
-                        // Click Handler for Truck Details
                         onClick={() => handleTruckClick(truck, dateFormatted)}
                         className="cursor-pointer group/event"
                       >
@@ -231,7 +248,7 @@ export default function CalendarSystem({
                             <span className="truncate">{truck.name}</span>
                           </div>
 
-                          {/* Click Handler for Menu */}
+                          {/* Menu Icon */}
                           {truck.hasMenu && (
                             <button
                               type="button"
@@ -277,7 +294,8 @@ export default function CalendarSystem({
         <MenuModal
           menu={getSelectedMenu()}
           truckName={selectedEvent.truck.name}
-          onClose={() => setIsMenuOpen(false)} // Go back to Truck Modal? Or close all? Currently closes menu.
+          // FIX: Use our new Smart Close Handler
+          onClose={handleCloseMenu}
         />
       )}
     </div>

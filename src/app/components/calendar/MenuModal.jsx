@@ -11,7 +11,7 @@ export default function MenuModal({ menu, truckName, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div className="fixed inset-0 z-60 flex items-end sm:items-center justify-center p-0 sm:p-4">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-nature-500/80 backdrop-blur-md transition-opacity"
