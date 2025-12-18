@@ -2,7 +2,7 @@
   {
     "id": "truck-a",
     "name": "Taco Titan",
-    "logo": "/images/truck1.jpg",
+    "logo": "/assets/images/landing/truck.jpg",
     "description": "Authentic Mexican street food with a modern twist.",
     "website": "https://tacotitan.com",
     "socials": { "instagram": "@tacotitan", "facebook": "TacoTitanFood" },
@@ -12,7 +12,7 @@
   {
     "id": "truck-b",
     "name": "Burger Bliss",
-    "logo": "/images/truck2.jpg",
+    "logo": "/assets/images/landing/truck2.jpg",
     "description": "Smash burgers made from premium wagyu beef.",
     "website": "https://burgerbliss.com",
     "socials": { "instagram": "@burgerbliss" },
@@ -22,7 +22,7 @@
   {
     "id": "truck-c",
     "name": "Wok n' Roll",
-    "logo": "/images/truck3.jpg",
+    "logo": "/assets/images/landing/truck3.jpg",
     "description": "Asian fusion bowls and spicy noodles.",
     "website": "https://woknroll.com",
     "socials": { "instagram": "@woknroll" },
@@ -32,7 +32,7 @@
   {
     "id": "truck-d",
     "name": "Crepe Escape",
-    "logo": "/images/truck4.jpg",
+    "logo": "/assets/images/landing/truck.jpg",
     "description": "Sweet and savory crepes made fresh.",
     "website": "https://crepeescape.com",
     "socials": { "instagram": "@crepeescape" },

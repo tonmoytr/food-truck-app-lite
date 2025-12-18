@@ -22,16 +22,25 @@ import {
     ChevronRight,
     Utensils,
 } from "lucide-react";
-import Image from "next/image"; // Import Next.js Image
+import Image from "next/image";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
+
+// Import our new Modals
+import MenuModal from "./MenuModal";
+import TruckModal from "./TruckModal";
 
 export default function CalendarSystem({
   events = [],
   holidays = [],
   trucks = [],
+  menus = [],
 }) {
   const [currentDate, setCurrentDate] = useState(new Date());
+
+  // --- Modal State ---
+  const [selectedEvent, setSelectedEvent] = useState(null); // Stores the truck & date
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Toggles Menu Modal
 
   // --- Helpers ---
   const truckMap = trucks.reduce((acc, truck) => {
@@ -67,21 +76,30 @@ export default function CalendarSystem({
   const getDayHoliday = (day) =>
     holidays.find((h) => isSameDay(parseISO(h.date), day));
 
-  // --- Interaction Handlers (Placeholders for Modals) ---
-  const handleTruckClick = (truckName) => {
-    console.log(`Opening Truck Modal for: ${truckName}`);
-    // setTruckModalOpen(true)...
+  // --- Interaction Handlers ---
+
+  // 1. Open Truck Details
+  const handleTruckClick = (truck, dateFormatted) => {
+    setSelectedEvent({ truck, date: dateFormatted });
+    setIsMenuOpen(false); // Ensure menu is closed initially
   };
 
-  const handleMenuClick = (e, truckName) => {
-    e.stopPropagation(); // <--- CRITICAL: Stops the click from triggering handleTruckClick
-    console.log(`Opening Menu Modal for: ${truckName}`);
-    // setMenuModalOpen(true)...
+  // 2. Open Menu Directly
+  const handleMenuClick = (e, truck, dateFormatted) => {
+    e.stopPropagation();
+    setSelectedEvent({ truck, date: dateFormatted });
+    setIsMenuOpen(true);
+  };
+
+  // 3. Helper to find menu for selected truck
+  const getSelectedMenu = () => {
+    if (!selectedEvent) return null;
+    return menus.find((m) => m.truckId === selectedEvent.truck.id);
   };
 
   return (
     <div className="w-full max-w-7xl mx-auto px-2 sm:px-6 mb-20" {...handlers}>
-      {/* --- Header & Filters --- */}
+      {/* --- Header (Same as before) --- */}
       <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-8 gap-4 bg-white p-6 rounded-2xl shadow-sm border border-nature-100">
         <div>
           <h2 className="text-3xl font-serif font-bold text-nature-500">
@@ -111,7 +129,6 @@ export default function CalendarSystem({
               ▼
             </div>
           </div>
-
           <div className="flex items-center gap-1 bg-nature-50 p-1 rounded-full border border-nature-200">
             <button
               onClick={prevMonth}
@@ -129,7 +146,7 @@ export default function CalendarSystem({
         </div>
       </div>
 
-      {/* --- Calendar Grid --- */}
+      {/* --- Calendar Grid (Same as before) --- */}
       <div className="bg-white rounded-3xl shadow-xl border border-nature-100 overflow-hidden">
         <div className="grid grid-cols-7 border-b border-nature-100 bg-nature-50/50">
           {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
@@ -152,7 +169,6 @@ export default function CalendarSystem({
             return (
               <div
                 key={day.toString()}
-                // FIX: Replaced min-h-[140px] with min-h-35 (standard class)
                 className={`
                   min-h-35 border-b border-r border-nature-100 p-2 relative group transition-colors overflow-hidden
                   ${
@@ -162,10 +178,9 @@ export default function CalendarSystem({
                   }
                 `}
               >
-                {/* --- HOLIDAY BACKGROUND (Desktop) --- */}
+                {/* Holiday Logic (Same as before) */}
                 {holiday && isSelectedMonth && (
-                  <div className="hidden md:block absolute inset-0 opacity-60 pointer-events-none z-0">
-                    {/* The Image */}
+                  <div className="hidden md:block absolute inset-0 pointer-events-none z-0">
                     <Image
                       src={holiday.image || "/images/holiday-bg.jpg"}
                       alt={holiday.name}
@@ -173,34 +188,23 @@ export default function CalendarSystem({
                       className="object-cover"
                       sizes="(max-width: 768px) 0vw, 15vw"
                     />
-
-                    {/* --- THE DARK OVERLAY --- */}
-                    {/* Adjust 'bg-black/20' to control darkness (e.g. /10, /30, /50) */}
                     <div className="absolute inset-0 bg-black/20 mix-blend-overlay" />
                   </div>
                 )}
-
-                {/* Date Number */}
                 <div className="flex justify-between items-start relative z-10">
                   <span
-                    className={`
-                    w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold
-                    ${isTodayDate ? "bg-nature-500 text-white shadow-md" : ""}
-                    ${holiday ? "text-amber-600" : ""}
-                  `}
+                    className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold ${
+                      isTodayDate ? "bg-nature-500 text-white shadow-md" : ""
+                    } ${holiday ? "text-amber-600" : ""}`}
                   >
                     {format(day, "d")}
                   </span>
-
-                  {/* HOLIDAY TEXT (Mobile) */}
                   {holiday && (
                     <span className="md:hidden text-[10px] font-bold text-amber-600 bg-amber-50 px-1 rounded truncate max-w-15">
                       {holiday.name}
                     </span>
                   )}
                 </div>
-
-                {/* HOLIDAY TEXT (Desktop) */}
                 {holiday && (
                   <div className="hidden md:block absolute bottom-1 right-2 text-xs font-bold text-nature-200 uppercase tracking-widest opacity-40 -rotate-12 pointer-events-none">
                     {holiday.name}
@@ -212,27 +216,28 @@ export default function CalendarSystem({
                   {dayEvents.slice(0, 3).map((event) => {
                     const truck = truckMap[event.truckId];
                     if (!truck) return null;
+                    const dateFormatted = format(day, "EEEE, MMMM do");
 
                     return (
                       <div
                         key={event.id}
-                        // Main Click: Opens Truck Details
-                        onClick={() => handleTruckClick(truck.name)}
+                        // Click Handler for Truck Details
+                        onClick={() => handleTruckClick(truck, dateFormatted)}
                         className="cursor-pointer group/event"
                       >
                         <div className="pl-2 pr-1 py-1.5 rounded-lg bg-nature-50 text-nature-600 border border-nature-100 text-xs font-medium truncate hover:bg-nature-500 hover:text-white hover:shadow-md transition-all flex items-center justify-between gap-1">
-                          {/* Name Section */}
                           <div className="flex items-center gap-1.5 truncate grow">
                             <span className="w-1.5 h-1.5 rounded-full bg-nature-400 group-hover/event:bg-white shrink-0"></span>
                             <span className="truncate">{truck.name}</span>
                           </div>
 
-                          {/* Menu Icon (Button) */}
-                          {/* FIX: Separate interaction using e.stopPropagation() */}
+                          {/* Click Handler for Menu */}
                           {truck.hasMenu && (
                             <button
                               type="button"
-                              onClick={(e) => handleMenuClick(e, truck.name)}
+                              onClick={(e) =>
+                                handleMenuClick(e, truck, dateFormatted)
+                              }
                               className="bg-white/40 p-1 rounded hover:bg-white hover:text-nature-500 transition-colors shrink-0 z-20"
                               title="View Menu"
                             >
@@ -243,8 +248,6 @@ export default function CalendarSystem({
                       </div>
                     );
                   })}
-
-                  {/* More Events Indicator */}
                   {dayEvents.length > 3 && (
                     <button className="w-full text-left text-[10px] font-bold text-nature-400 hover:text-nature-500 pl-2">
                       + {dayEvents.length - 3} more...
@@ -256,6 +259,27 @@ export default function CalendarSystem({
           })}
         </div>
       </div>
+
+      {/* --- RENDER MODALS --- */}
+
+      {/* 1. Truck Details Modal */}
+      {selectedEvent && !isMenuOpen && (
+        <TruckModal
+          truck={selectedEvent.truck}
+          date={selectedEvent.date}
+          onClose={() => setSelectedEvent(null)}
+          onOpenMenu={() => setIsMenuOpen(true)}
+        />
+      )}
+
+      {/* 2. Full Menu Modal */}
+      {selectedEvent && isMenuOpen && (
+        <MenuModal
+          menu={getSelectedMenu()}
+          truckName={selectedEvent.truck.name}
+          onClose={() => setIsMenuOpen(false)} // Go back to Truck Modal? Or close all? Currently closes menu.
+        />
+      )}
     </div>
   );
 }
