@@ -1,13 +1,12 @@
 import Button from "@/app/components/ui/Button";
 import Container from "@/app/components/ui/Container";
 import Link from "next/link";
-import MobileMenu from "./MobileMenu"; // Import the island
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const navLinks = [
     { name: "Locations", href: "#locations" },
     { name: "Our Trucks", href: "#trucks" },
-    { name: "Schedule", href: "/schedule" },
   ];
 
   return (

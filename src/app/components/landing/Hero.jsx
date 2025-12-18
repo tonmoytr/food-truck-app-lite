@@ -1,7 +1,6 @@
 import Button from "@/app/components/ui/Button";
 import Container from "@/app/components/ui/Container";
 import Image from "next/image";
-// import HeroImage from "/assets/images/landing/hero.png";
 
 export default function Hero() {
   return (
@@ -46,10 +45,10 @@ export default function Hero() {
                     className="w-8 h-8 relative rounded-full border-2 border-white overflow-hidden"
                   >
                     <Image
-                      src={`/assets/images/landing/user${i}.jpg`} 
+                      src={`/assets/images/landing/user${i}.jpg`}
                       alt={`Foodie User ${i}`}
                       fill
-                      sizes="32px"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-cover"
                     />
                   </div>

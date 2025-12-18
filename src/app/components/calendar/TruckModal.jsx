@@ -34,6 +34,7 @@ export default function TruckModal({ truck, date, onClose, onOpenMenu }) {
               src={truck.logo}
               alt={truck.name}
               fill
+              sizes="200px"
               className="object-cover"
             />
           </div>

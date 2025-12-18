@@ -1,6 +1,6 @@
 "use client";
 
-import { submitContactForm } from "@/app/actions/action"; // Import the server action
+import { submitContactForm } from "@/app/actions/action";
 import Button from "@/app/components/ui/Button";
 import Container from "@/app/components/ui/Container";
 import { useActionState } from "react";
@@ -96,7 +96,7 @@ export default function ContactForm() {
                     <input
                       type="text"
                       id="name"
-                      name="name" // The 'name' attribute is CRUCIAL for Server Actions
+                      name="name" 
                       placeholder="John Doe"
                       className={`w-full px-4 py-3 rounded-xl bg-nature-100/30 border ${
                         state.errors?.name

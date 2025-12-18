@@ -1,17 +1,16 @@
-import CalendarSystem from "@/app/components/calendar/CalendarSystem"; // Import the new component
+import CalendarSystem from "@/app/components/calendar/CalendarSystem";
 import Container from "@/app/components/ui/Container";
 import {
-    getAllMenus,
-    getAllTrucks,
-    getHolidays,
-    getLocationBySlug,
-    getScheduleByLocation,
+  getAllMenus,
+  getAllTrucks,
+  getHolidays,
+  getLocationBySlug,
+  getScheduleByLocation,
 } from "@/lib/api";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function LocationPage({ params }) {
-  // Use await for params in Next.js 16
   const { slug } = await params;
 
   // Fetch Data

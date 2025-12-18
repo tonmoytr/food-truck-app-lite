@@ -1,26 +1,26 @@
 "use client";
 
 import {
-    addMonths,
-    eachDayOfInterval,
-    endOfMonth,
-    endOfWeek,
-    format,
-    getYear,
-    isSameDay,
-    isSameMonth,
-    isToday,
-    parseISO,
-    setYear,
-    startOfMonth,
-    startOfWeek,
-    subMonths,
+  addMonths,
+  eachDayOfInterval,
+  endOfMonth,
+  endOfWeek,
+  format,
+  getYear,
+  isSameDay,
+  isSameMonth,
+  isToday,
+  parseISO,
+  setYear,
+  startOfMonth,
+  startOfWeek,
+  subMonths,
 } from "date-fns";
 import {
-    Calendar as CalIcon,
-    ChevronLeft,
-    ChevronRight,
-    Utensils,
+  Calendar as CalIcon,
+  ChevronLeft,
+  ChevronRight,
+  Utensils,
 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -41,7 +41,7 @@ export default function CalendarSystem({
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // FIX: New state to track if we opened menu directly from the calendar icon
+  // New state to track if we opened menu directly from the calendar icon
   const [isDirectMenuAccess, setIsDirectMenuAccess] = useState(false);
 
   // --- Helpers ---
@@ -49,6 +49,8 @@ export default function CalendarSystem({
     acc[truck.id] = truck;
     return acc;
   }, {});
+
+  // console.log("truckMap", truckMap);
 
   // --- Calendar Logic ---
   const monthStart = startOfMonth(currentDate);
@@ -201,7 +203,7 @@ export default function CalendarSystem({
                       alt={holiday.name}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 768px) 0vw, 15vw"
+                      sizes="(max-width: 768px) 100vw, 20vw"
                     />
                     <div className="absolute inset-0 bg-black/20 mix-blend-overlay" />
                   </div>

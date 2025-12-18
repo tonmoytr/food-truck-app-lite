@@ -10,16 +10,13 @@
 }
 
 @theme {
-  /* Link the CSS variables to Tailwind classes.
-     Now you can use: bg-nature-100, text-nature-500, etc.
-  */
   --color-nature-100: var(--color-nature-100);
   --color-nature-200: var(--color-nature-200);
   --color-nature-300: var(--color-nature-300);
   --color-nature-400: var(--color-nature-400);
   --color-nature-500: var(--color-nature-500);
 
-  /* Link the Next.js Font Variables you set in layout.tsx */
+  /* Link the Next.js Font Variables */
   --font-serif: var(--font-libre);
   --font-sans: var(--font-poppins);
 }
