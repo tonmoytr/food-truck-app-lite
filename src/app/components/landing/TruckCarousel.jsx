@@ -70,7 +70,7 @@ export default function TruckCarousel() {
           {trucks.map((truck) => (
             <SwiperSlide key={truck.id} className="h-full">
               {/* FIX 1: Added brackets around height [400px] */}
-              <div className="group relative h-400px w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="group relative h-100 w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 {/* Image */}
                 <div className="relative h-full w-full">
                   <Image
