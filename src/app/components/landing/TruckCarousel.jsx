@@ -70,7 +70,7 @@ export default function TruckCarousel() {
           {trucks.map((truck) => (
             <SwiperSlide key={truck.id} className="h-full">
               {/* FIX 1: Added brackets around height [400px] */}
-              <div className="group relative h-[400px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="group relative h-400px w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 {/* Image */}
                 <div className="relative h-full w-full">
                   <Image
@@ -83,7 +83,7 @@ export default function TruckCarousel() {
                 </div>
 
                 {/* FIX 2: Changed to bg-gradient-to-t */}
-                <div className="absolute inset-0 bg-gradient-to-t from-nature-500/90 via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-linear-to-t from-nature-500/90 via-transparent to-transparent opacity-80" />
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 w-full p-6 text-white">

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "truck-a",
+    "name": "Taco Titan",
+    "logo": "/images/truck1.jpg",
+    "description": "Authentic Mexican street food with a modern twist.",
+    "website": "https://tacotitan.com",
+    "socials": { "instagram": "@tacotitan", "facebook": "TacoTitanFood" },
+    "topDishes": ["Birria Tacos", "Street Corn"],
+    "hasMenu": true
+  },
+  {
+    "id": "truck-b",
+    "name": "Burger Bliss",
+    "logo": "/images/truck2.jpg",
+    "description": "Smash burgers made from premium wagyu beef.",
+    "website": "https://burgerbliss.com",
+    "socials": { "instagram": "@burgerbliss" },
+    "topDishes": ["Double Smash", "Truffle Fries"],
+    "hasMenu": true
+  },
+  {
+    "id": "truck-c",
+    "name": "Wok n' Roll",
+    "logo": "/images/truck3.jpg",
+    "description": "Asian fusion bowls and spicy noodles.",
+    "website": "https://woknroll.com",
+    "socials": { "instagram": "@woknroll" },
+    "topDishes": ["Spicy Ramen", "Dim Sum Box"],
+    "hasMenu": true
+  },
+  {
+    "id": "truck-d",
+    "name": "Crepe Escape",
+    "logo": "/images/truck4.jpg",
+    "description": "Sweet and savory crepes made fresh.",
+    "website": "https://crepeescape.com",
+    "socials": { "instagram": "@crepeescape" },
+    "topDishes": ["Nutella Bomb", "Ham & Cheese"],
+    "hasMenu": true
+  }
+]

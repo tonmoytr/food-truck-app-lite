@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "truckId": "truck-a",
+    "locationId": "nyc",
+    "date": "2025-12-05",
+    "time": "11am - 8pm"
+  },
+  {
+    "id": 2,
+    "truckId": "truck-a",
+    "locationId": "nyc",
+    "date": "2025-12-06",
+    "time": "11am - 8pm"
+  },
+  {
+    "id": 3,
+    "truckId": "truck-a",
+    "locationId": "nyc",
+    "date": "2025-12-07",
+    "time": "11am - 8pm"
+  },
+
+  {
+    "id": 4,
+    "truckId": "truck-a",
+    "locationId": "nyc",
+    "date": "2025-12-10",
+    "time": "11am - 8pm"
+  },
+  {
+    "id": 5,
+    "truckId": "truck-b",
+    "locationId": "nyc",
+    "date": "2025-12-10",
+    "time": "12pm - 9pm"
+  },
+
+  {
+    "id": 6,
+    "truckId": "truck-c",
+    "locationId": "nyc",
+    "date": "2025-12-15",
+    "time": "10am - 6pm"
+  },
+  {
+    "id": 7,
+    "truckId": "truck-a",
+    "locationId": "nyc",
+    "date": "2025-12-15",
+    "time": "11am - 8pm"
+  },
+  {
+    "id": 8,
+    "truckId": "truck-b",
+    "locationId": "nyc",
+    "date": "2025-12-15",
+    "time": "12pm - 9pm"
+  },
+  {
+    "id": 9,
+    "truckId": "truck-d",
+    "locationId": "nyc",
+    "date": "2025-12-15",
+    "time": "9am - 5pm"
+  },
+
+  {
+    "id": 10,
+    "truckId": "truck-a",
+    "locationId": "la",
+    "date": "2025-12-10",
+    "time": "11am - 5pm"
+  }
+]

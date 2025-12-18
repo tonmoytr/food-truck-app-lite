@@ -16,7 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Food Truck Lite",
+  title: "STREET EATS |  A Lite Food Truck",
   description: "A dynamic food truck for all your culinary adventures.",
 };
 

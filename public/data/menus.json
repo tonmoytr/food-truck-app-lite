@@ -1,0 +1,57 @@
+[
+  {
+    "truckId": "truck-a",
+    "categories": [
+      {
+        "name": "Tacos",
+        "items": [
+          {
+            "name": "Birria Taco",
+            "price": "$4.50",
+            "desc": "Slow cooked beef with consome"
+          },
+          {
+            "name": "Al Pastor",
+            "price": "$3.50",
+            "desc": "Marinated pork with pineapple"
+          },
+          {
+            "name": "Veggie Mix",
+            "price": "$3.00",
+            "desc": "Grilled peppers and onions"
+          }
+        ]
+      },
+      {
+        "name": "Sides",
+        "items": [
+          {
+            "name": "Street Corn (Elote)",
+            "price": "$5.00",
+            "desc": "Mayo, cotija cheese, chili powder"
+          },
+          {
+            "name": "Chips & Guac",
+            "price": "$6.00",
+            "desc": "Freshly made daily"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "truckId": "truck-b",
+    "categories": [
+      {
+        "name": "Burgers",
+        "items": [
+          {
+            "name": "Classic Smash",
+            "price": "$12.00",
+            "desc": "American cheese, pickles, house sauce"
+          }
+        ]
+      }
+    ]
+  }
+]

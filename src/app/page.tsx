@@ -1,3 +1,4 @@
+import LocationCards from "@/app/components/landing/LocationCards";
 import ContactForm from "./components/landing/ContactForm";
 import Hero from "./components/landing/Hero";
 import PartnerLogos from "./components/landing/PartnerLogos";
@@ -11,6 +12,7 @@ export default function Home() {
 
       {/* Landing Page Sections */}
       <Hero />
+      <LocationCards />
       <PartnerLogos />
       <TruckCarousel />
       <ContactForm />

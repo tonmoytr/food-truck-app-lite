@@ -34,6 +34,6 @@
     "src/app/components/landing/Hero.jsx",
     "src/app/components/ui/Buttonjtsx",
     "src/app/components/ui/Container.jsx"
-, "src/app/components/landing/PartnerLogos.jsx", "src/app/components/landing/TruckCarousel.jsx", "src/app/components/landing/ContactForm.jsx"  ],
+, "src/app/components/landing/PartnerLogos.jsx", "src/app/components/landing/TruckCarousel.jsx", "src/app/components/landing/ContactForm.jsx", "src/app/components/landing/LocationCards.jsx"  ],
   "exclude": ["node_modules"]
 }

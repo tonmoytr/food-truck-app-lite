@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2025-12-25",
+    "name": "Christmas Day",
+    "type": "federal",
+    "icon": "🎄"
+  },
+  {
+    "date": "2025-01-01",
+    "name": "New Year's Day",
+    "type": "federal",
+    "icon": "🎉"
+  },
+  {
+    "date": "2025-11-27",
+    "name": "Thanksgiving",
+    "type": "federal",
+    "icon": "🦃"
+  }
+]

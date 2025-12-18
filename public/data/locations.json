@@ -1,0 +1,30 @@
+[
+  {
+    "id": "nyc",
+    "name": "New York City",
+    "slug": "new-york",
+    "image": "/images/loc-downtown.jpg",
+    "address": "123 Broadway, NY"
+  },
+  {
+    "id": "la",
+    "name": "Los Angeles",
+    "slug": "los-angeles",
+    "image": "/images/loc-tech.jpg",
+    "address": "45 Sunset Blvd, CA"
+  },
+  {
+    "id": "chi",
+    "name": "Chicago",
+    "slug": "chicago",
+    "image": "/images/loc-river.jpg",
+    "address": "88 Loop Drive, IL"
+  },
+  {
+    "id": "mia",
+    "name": "Miami",
+    "slug": "miami",
+    "image": "/images/loc-downtown.jpg",
+    "address": "22 Ocean Drive, FL"
+  }
+]
