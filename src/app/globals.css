@@ -1,7 +1,6 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
-  /* Define your specific color variables here */
   --color-nature-100: #dad7cd;
   --color-nature-200: #a3b18a;
   --color-nature-300: #588157;
@@ -16,25 +15,21 @@
   --color-nature-400: var(--color-nature-400);
   --color-nature-500: var(--color-nature-500);
 
-  /* Link the Next.js Font Variables */
   --font-serif: var(--font-libre);
   --font-sans: var(--font-poppins);
-}
+} */
 
-/* Reset layer 
-   This ensures your fonts apply to the body 
-*/
-@layer base {
-  body {
-    font-family: var(--font-sans);
-    @apply bg-white text-nature-500;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-serif);
-  }
+@import "tailwindcss";
+
+@theme {
+  /* FIX: Add generic fallbacks after the variable */
+  --font-serif: var(--font-libre), serif;
+  --font-sans: var(--font-poppins), sans-serif;
+
+  /* Your Colors */
+  --color-nature-100: #dad7cd;
+  --color-nature-200: #a3b18a;
+  --color-nature-300: #588157;
+  --color-nature-400: #3a5a40;
+  --color-nature-500: #344e41;
 }
