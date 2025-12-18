@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Define your specific color variables here */
+  --color-nature-100: #dad7cd;
+  --color-nature-200: #a3b18a;
+  --color-nature-300: #588157;
+  --color-nature-400: #3a5a40;
+  --color-nature-500: #344e41;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* Link the CSS variables to Tailwind classes.
+     Now you can use: bg-nature-100, text-nature-500, etc.
+  */
+  --color-nature-100: var(--color-nature-100);
+  --color-nature-200: var(--color-nature-200);
+  --color-nature-300: var(--color-nature-300);
+  --color-nature-400: var(--color-nature-400);
+  --color-nature-500: var(--color-nature-500);
+
+  /* Link the Next.js Font Variables you set in layout.tsx */
+  --font-serif: var(--font-libre);
+  --font-sans: var(--font-poppins);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Reset layer 
+   This ensures your fonts apply to the body 
+*/
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    @apply bg-white text-nature-500;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+  }
 }

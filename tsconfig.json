@@ -18,6 +18,7 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -28,7 +29,11 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-  ],
+    "**/*.mts",
+    "src/app/components/layout/Header.jsx",
+    "src/app/components/landing/Hero.jsx",
+    "src/app/components/ui/Buttonjtsx",
+    "src/app/components/ui/Container.jsx"
+, "src/app/components/landing/PartnerLogos.jsx", "src/app/components/landing/TruckCarousel.jsx", "src/app/components/landing/ContactForm.jsx"  ],
   "exclude": ["node_modules"]
 }
