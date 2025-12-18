@@ -33,7 +33,17 @@ export async function getTruckById(truckId) {
   return trucks.find((t) => t.id === truckId);
 }
 
-// 5. Get Holidays (for the calendar icons)
+// 5. Get All Trucks (to map IDs to Names in the calendar)
+export async function getAllTrucks() {
+  return await fetchJson("trucks.json");
+}
+
+// 6. Get Holidays (for the calendar icons)
 export async function getHolidays() {
   return await fetchJson("holidays.json");
+}
+
+// 7. Get All Menus (to pass to the calendar/modals)
+export async function getAllMenus() {
+  return await fetchJson("menus.json");
 }
