@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Description
 
-## Getting Started
+**FoodTruck Lite** is a streamlined food ordering and management platform designed for a seamless dining experience. It allows users to browse menus, manage their carts, and track orders, while providing administrators with a robust dashboard to manage inventory and monitor sales performance.
 
-First, run the development server:
+**Live Link:** [food-truck-app-lite.vercel.app](https://food-truck-app-lite.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Tech Stack:** React.js, Tailwind CSS, Firebase, Express.js, MongoDB.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-----
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Project Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+FoodTruck Lite bridges the gap between food enthusiasts and kitchen management. The application features a clean, intuitive UI for customers to explore various food categories and a powerful backend system to handle authentication and secure transactions. It is designed to be lightweight, fast, and highly responsive for users on the go.
 
-## Learn More
+### Screenshot
 
-To learn more about Next.js, take a look at the following resources:
+*(Note: Replace this placeholder link with your actual project screenshot for a professional look)*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-----
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Main Technologies
 
-## Deploy on Vercel
+  * **Frontend:** React.js, Tailwind CSS, DaisyUI.
+  * **Backend:** Node.js, Express.js.
+  * **Database:** MongoDB.
+  * **Authentication:** Firebase Authentication (Google & Email/Password).
+  * **State Management:** React Context API & TanStack Query (React Query).
+  * **Security:** JSON Web Tokens (JWT) for private route protection.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-----
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Key Features
+
+  * **Dynamic Food Menu:** Browse food items categorized by type (Salad, Pizza, Soups, Desserts, etc.).
+  * **Secure Authentication:** Integrated Firebase login with JWT-based authorization for protected actions.
+  * **Shopping Cart System:** Add, remove, and manage food items in real-time.
+  * **Admin Dashboard:** Dedicated panel for managing the food menu (Add/Update/Delete items) and viewing user orders.
+  * **Payment Integration:** Secure checkout process powered by Stripe.
+  * **Responsive UI:** Fully optimized for mobile, tablet, and desktop screens using Tailwind CSS.
+
+-----
+
+### Dependencies
+
+  * `framer-motion`: For smooth UI animations and transitions.
+  * `stripe/stripe-js` & `react-stripe-js`: For handling secure online payments.
+  * `axios`: For streamlined communication with the backend API.
+  * `react-hook-form`: For performant and validated form handling.
+  * `sweetalert2`: For interactive and user-friendly alert notifications.
+
+-----
+
+### Local Setup Guide
+
+Follow these steps to get the project running on your local machine:
+
+1.  **Clone the Repository:**
+
+    ```bash
+    git clone https://github.com/tonmoytr/food-truck-app-lite.git
+    cd food-truck-app-lite
+    ```
+
+2.  **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Launch the App:**
+
+    ```bash
+    npm run dev
+    ```
+
+-----
+
+### Relevant Links
+
+  * **Live Demo:** [Visit Site](https://food-truck-app-lite.vercel.app/)
+  * **GitHub Repository:** [Source Code](https://github.com/tonmoytr/food-truck-app-lite)
